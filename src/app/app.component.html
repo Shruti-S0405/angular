@@ -1,6 +1,36 @@
-<!-- <ul>
-  @for(user of users; track user.id){
-  <li>{{user.name}}</li>
-  }
-</ul> -->
-<app-member-contact></app-member-contact>
+<!-- <tr>
+  <th>Name</th>
+  <th>Username</th>
+  <th>Email</th>
+</tr>
+
+<tr *ngFor="let item of users">
+  <td>{{item.name}}</td>
+  <td>{{item.username}}</td>
+  <td>{{item.email}}</td>
+</tr> -->
+
+<table class="table table-hover">
+  <thead>
+      <tr>
+          <td>Id</td>
+          <td>Name</td>
+          <td>Username</td>
+          <td>Email</td>
+          <td>Phone</td>
+          <td>Location</td>
+          <td>Website</td>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let item of users" >
+          <td>{{item.id}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.username}}</td>
+          <td>{{item.email}}</td>
+          <td>{{item.phone}}</td>
+          <td>{{item.address.street}}</td>
+          <td>{{item.website}}</td>
+      </tr>
+  </tbody>
+</table> 

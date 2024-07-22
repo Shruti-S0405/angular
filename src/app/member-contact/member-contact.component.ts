@@ -1,25 +1,23 @@
-import { Component } from '@angular/core';
-import { DataService, IUserData } from '../data.service';
-import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { FieldsComponent } from './fields/fields.component';
-// import { IUserData } from '../data.service';
+import { HttpClientModule } from '@angular/common/http';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-member-contact',
   standalone: true,
-  imports: [HttpClientModule, CommonModule, FieldsComponent],
-  providers: [DataService],
+  imports: [HttpClientModule, CommonModule],
   templateUrl: './member-contact.component.html',
   styleUrl: './member-contact.component.css'
 })
 export class MemberContactComponent {
-  users: IUserData[] = [];
+  users: User[] = [];
+
+  x:string = environment.apiUrl + '/users';
 
   constructor(private dataService: DataService){
-      this.dataService.getUsers().subscribe(
-        (users: any) => {
-          this.users = users;
+      this.dataService.get(this.x).subscribe(
+        (users : any) => {
+          this.users = users as User[];
       },
       () => {}
     );
